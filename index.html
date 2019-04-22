@@ -1,15 +1,56 @@
 <html lang="en">
 <head>
-    <script src="/Users/martinsson/Documents/Exjobb/Webpage/thesis/node_modules/papaparse/papaparse.js "></script>   
+    <script src="https://cdn.jsdelivr.net/gh/mholt/PapaParse/papaparse.js"></script>   
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="index.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
     <title>Anton Thesis Data</title>
 </head>
 <body>
-    <div>Hejsan</div>
-    
+    <div class="container" id="topContainer">
+        <h2>Antons Thesis Data</h2>
+    </div>
+    <p id="descriptionText">Some simple visualizations of the data from my thesis.</p>
+    <div class="container" id="topContainer">
+        <select id="participant" onchange="parseCSV()">
+            <option value="Johanna">Johanna</option>
+            <option value="All">All</option>
+        </select>
+    </div>
+
+    <div class="container" id="dataContainer">
+        <div class="row justify-content-center">
+            <div class="col-lg" id="panel">
+                <script id="graph1" type="text/javascript" src="svg_Panel.js"></script>
+            </div>
+            <div class="col-lg" id="popup">
+                <script id="graph2" type="text/javascript" src="svg_Popup.js"></script>
+            </div>
+            <div class="col-lg" id="enlarge">
+                <script id="graph3" type="text/javascript" src="svg_Enlarge.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="details">
+            <div class="row justify-content-center">
+                <div class="col-lg" id="panel">
+                    Details about the session go here
+                </div>
+                <div class="col-lg" id="popup">
+                    Details about the session go here
+                </div>
+                <div class="col-lg" id="enlarge">
+                    Details about the session go here
+                </div>
+            </div>
+        </div>
+          
+<script src="index.js"></script>
+
 </body>
 </html>
