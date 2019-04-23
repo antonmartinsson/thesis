@@ -6,10 +6,12 @@ body {
   }
   
   svg {
-      width: 370;
-      height: 250;
-      position: relative;
-      padding-left: 15px;
+    display: inline-block;
+    position: relative;
+    height: 50%;
+    vertical-align: top;
+    padding-right: 6.3%;
+    overflow: hidden;
   }
   
   path.slice{

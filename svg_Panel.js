@@ -1,5 +1,6 @@
 var panelSVG = d3.select("#dataContainer")
     .append("svg")
+    .attr("class", "svg-container")
     .append("g")
 
 panelSVG.append("g")
@@ -29,6 +30,8 @@ var outerArc = d3.svg.arc()
     .outerRadius(radius * 0.9);
 
 panelSVG.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+panelSVG.attr("preserveAspectRatio", "xMinYMin meet");
+panelSVG.attr("viewBox", "0 0 360 250");
 
 panelSVG.append("text")
    .attr("text-anchor", "middle")
