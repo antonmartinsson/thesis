@@ -12,6 +12,7 @@ function parseCSV() {
         complete: function(results) {
             //console.log("Finished:", results.data)
             dataToDisplay = results.data;
+            console.log(dataToDisplay);
             panelData(dataToDisplay);
             popupData(dataToDisplay);
             enlargeData(dataToDisplay);
@@ -25,23 +26,23 @@ function panelData(dataToDisplay) {
 
     for (var i = 0; i < dataToDisplay.length; i += 30) {
         var floatData = parseFloat(dataToDisplay[i][2]);
-        console.log(dataToDisplay[i])
 
         if (isNaN(floatData)) {
 
         }
         else {
-            console.log(floatData);
+            // console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][2]);
             //console.log(distanceChanged);
             if (distanceChanged < 0.5) {
-                console.log("Second added");
                 totalPause += 1;
             }
         }
     }
     var panelActive = dataToDisplay.length/30 - totalPause;
     var panelPause = totalPause;
+    console.log(panelActive);
+    console.log(totalPause);
     changePanel(dataForPanel(panelActive, panelPause));
 }
 
