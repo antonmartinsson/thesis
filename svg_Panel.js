@@ -17,7 +17,6 @@ var width = 360,
 var pie = d3.layout.pie()
     .sort(null)
     .value(function(d) {
-        console.log(d.value);
         return d.value;
     });
 
@@ -42,7 +41,7 @@ var key = function(d){ return d.data.label; };
 
 var color = d3.scale.ordinal()
     .domain(["Active", "Pause"])
-    .range(["#98abc5", "#8a89a6"]);
+    .range(["#4998FF", "#8CA3BF"]);
 
 function dataForPanel(panelActive, panelPause){
     var labels = color.domain();
@@ -54,7 +53,6 @@ function dataForPanel(panelActive, panelPause){
             labels[i] = { label: labels[i].label ? labels[i].label : labels[i], value: panelPause }
         }
     };
-    console.log(labels);
     return labels;
 
 }
@@ -92,6 +90,7 @@ function changePanel(data) {
 
     text.enter()
         .append("text")
+        .attr("font-size","12px")
         .attr("dy", ".35em")
         .text(function(d) {
             return d.data.label;

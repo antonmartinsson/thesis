@@ -17,7 +17,6 @@ var width = 360,
 var pie = d3.layout.pie()
     .sort(null)
     .value(function(d) {
-        console.log(d.value);
         return d.value;
     });
 
@@ -54,7 +53,6 @@ function dataForEnlarge(enlargeActive, enlargePause){
             labels[i] = { label: labels[i].label ? labels[i].label : labels[i], value: enlargePause }
         }
     };
-    console.log(labels);
     return labels;
 }
 
@@ -91,6 +89,7 @@ function changeEnlarge(data) {
 
     text.enter()
         .append("text")
+        .attr("font-size","12px")
         .attr("dy", ".35em")
         .text(function(d) {
             return d.data.label;

@@ -18,6 +18,7 @@
     <div class="container" id="topContainer">
         <select id="participant" onchange="parseCSV()">
             <option value="Johanna">Johanna</option>
+            <option value="test1">Test 1</option>
             <option value="All">All</option>
         </select>
     </div>
@@ -37,19 +38,17 @@
     </div>
 
     <div class="container" id="details">
-            <div class="row justify-content-center">
-                <div class="col-lg" id="panel">
-                    Details about the session go here
-                </div>
-                <div class="col-lg" id="popup">
-                    Details about the session go here
-                </div>
-                <div class="col-lg" id="enlarge">
-                    Details about the session go here
-                </div>
-            </div>
-        </div>
-          
+            <div class="row justify-content-center"><h4>Time spent in each scene</h4></div>
+            <div class="row justify-content-center" id="sceneNames">Panel: <p id="panelTime"> </p></div>
+            <div class="row justify-content-center" id="sceneNames">Popup: <p id="popupTime"> </p></div>
+            <div class="row justify-content-center" id="sceneNames">Enlarge: <p id="enlargeTime"> </p></div>
+    </div>
+
+    <div class="row justify-content-center" id="likertTitle"><h3>Likert answers</h3></div>
+    <div class="container" id="likertContainer">
+        <script src="stackedLikert.js"></script>
+    </div>
+
 <script src="index.js"></script>
 
 </body>
