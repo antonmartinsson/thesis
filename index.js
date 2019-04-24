@@ -55,8 +55,10 @@ function popupData(dataToDisplay) {
 
         }
         else {
+            console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][0]);
             if (distanceChanged < 0.1) {
+                console.log("Second added");
                 totalPause += 1;
             }
         }
@@ -78,10 +80,10 @@ function enlargeData(dataToDisplay) {
 
         }
         else {
-            console.log(floatData);
+            //console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][1]);
             if (distanceChanged < 0.1) {
-                console.log("Second added");
+                //console.log("Second added");
                 totalPause += 1;
             }
         }
