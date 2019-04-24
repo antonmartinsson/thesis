@@ -34,7 +34,7 @@ function panelData(dataToDisplay) {
             // console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][2]);
             //console.log(distanceChanged);
-            if (distanceChanged < 0.5) {
+            if (distanceChanged < 0.2) {
                 totalPause += 1;
             }
         }
@@ -59,7 +59,7 @@ function popupData(dataToDisplay) {
         else {
             // console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][0]);
-            if (distanceChanged < 0.5) {
+            if (distanceChanged < 0.2) {
                 // console.log("Second added");
                 totalPause += 1;
             }
@@ -84,7 +84,7 @@ function enlargeData(dataToDisplay) {
         else {
             //console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][1]);
-            if (distanceChanged < 0.5) {
+            if (distanceChanged < 0.2) {
                 //console.log("Second added");
                 totalPause += 1;
             }
