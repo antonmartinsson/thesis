@@ -25,16 +25,17 @@ function panelData(dataToDisplay) {
 
     for (var i = 0; i < dataToDisplay.length; i += 30) {
         var floatData = parseFloat(dataToDisplay[i][2]);
+        console.log(dataToDisplay[i])
 
         if (isNaN(floatData)) {
 
         }
         else {
-            //console.log(floatData);
+            console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][2]);
             //console.log(distanceChanged);
-            if (distanceChanged < 0.1) {
-                //console.log("Second added");
+            if (distanceChanged < 0.5) {
+                console.log("Second added");
                 totalPause += 1;
             }
         }
@@ -55,10 +56,10 @@ function popupData(dataToDisplay) {
 
         }
         else {
-            console.log(floatData);
+            // console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][0]);
-            if (distanceChanged < 0.1) {
-                console.log("Second added");
+            if (distanceChanged < 0.5) {
+                // console.log("Second added");
                 totalPause += 1;
             }
         }
@@ -82,7 +83,7 @@ function enlargeData(dataToDisplay) {
         else {
             //console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][1]);
-            if (distanceChanged < 0.1) {
+            if (distanceChanged < 0.5) {
                 //console.log("Second added");
                 totalPause += 1;
             }
