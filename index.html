@@ -17,8 +17,8 @@
     <p id="descriptionText">Some simple visualizations of the data from my thesis.</p>
     <div class="container" id="topContainer">
         <select id="participant" onchange="parseCSV()">
-            <option value="test1">Test 1</option>
             <option value="Johanna">Johanna</option>
+            <option value="Filip">Filip</option>
             <option value="All">All</option>
         </select>
     </div>
@@ -45,6 +45,14 @@
     </div>
 
     <div class="row justify-content-center" id="likertTitle"><h3>Likert answers</h3></div>
+    <div class="container" id="likertChooseScene">
+        <select id="scene">
+            <option value="Johanna">Panel</option>
+            <option value="test2">Popup</option>
+            <option value="test1">Enlarge</option>
+        </select>
+    </div>
+
     <div class="container" id="likertContainer">
         <script src="stackedLikert.js"></script>
     </div>

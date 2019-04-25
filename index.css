@@ -10,6 +10,8 @@ body {
     vertical-align: top;
     padding-right: 6.3%;
     overflow: auto;
+    justify-content: center;
+    align-items: center; 
   }
 
   .svg-container {
@@ -67,9 +69,19 @@ body {
 
 #likertContainer {
   margin-top: 30px;
-  margin-left: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  overflow: scroll;
 }
 
 #likertTitle {
   margin-top: 100px;
+}
+
+#likertChooseScene {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }

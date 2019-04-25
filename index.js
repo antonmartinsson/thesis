@@ -34,15 +34,13 @@ function panelData(dataToDisplay) {
             // console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][2]);
             //console.log(distanceChanged);
-            if (distanceChanged < 0.2) {
+            if (distanceChanged < 0.3) {
                 totalPause += 1;
             }
         }
     }
     var panelActive = dataToDisplay.length/30 - totalPause;
     var panelPause = totalPause;
-    console.log(panelActive);
-    console.log(totalPause);
     changePanel(dataForPanel(panelActive, panelPause));
 }
 
@@ -59,7 +57,7 @@ function popupData(dataToDisplay) {
         else {
             // console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][0]);
-            if (distanceChanged < 0.2) {
+            if (distanceChanged < 0.3) {
                 // console.log("Second added");
                 totalPause += 1;
             }
@@ -67,6 +65,8 @@ function popupData(dataToDisplay) {
     }
     var popupActive = dataToDisplay.length/30 - totalPause;
     var popupPause = totalPause;
+    console.log(popupActive);
+    console.log(totalPause);
     changePopup(dataForPopup(popupActive, popupPause));
 
 }
@@ -84,7 +84,7 @@ function enlargeData(dataToDisplay) {
         else {
             //console.log(floatData);
             distanceChanged = Math.abs(floatData - dataToDisplay[i-30][1]);
-            if (distanceChanged < 0.2) {
+            if (distanceChanged < 0.3) {
                 //console.log("Second added");
                 totalPause += 1;
             }
@@ -92,6 +92,8 @@ function enlargeData(dataToDisplay) {
     }
     var enlargeActive = dataToDisplay.length/30 - totalPause;
     var enlargePause = totalPause;
+    console.log(enlargeActive);
+    console.log(totalPause);
     changeEnlarge(dataForEnlarge(enlargeActive, enlargePause));
 
 }

@@ -29,6 +29,7 @@ var svg = d3.select("#likertContainer").append("svg")
   likertColors.domain(["Strongly disagree", "Disagree", "Neither agree nor disagree", "Agree", "Strongly agree"]);
 
   d3.csv("raw_data.csv", function(error, data) {
+    console.log(data);
 
   data.forEach(function(d) {
     // calc percentages
