@@ -65,8 +65,8 @@ function popupData(dataToDisplay) {
     }
     var popupActive = dataToDisplay.length/30 - totalPause;
     var popupPause = totalPause;
-    console.log(popupActive);
-    console.log(totalPause);
+    // console.log(popupActive);
+    // console.log(totalPause);
     changePopup(dataForPopup(popupActive, popupPause));
 
 }
@@ -92,8 +92,8 @@ function enlargeData(dataToDisplay) {
     }
     var enlargeActive = dataToDisplay.length/30 - totalPause;
     var enlargePause = totalPause;
-    console.log(enlargeActive);
-    console.log(totalPause);
+    // console.log(enlargeActive);
+    // console.log(totalPause);
     changeEnlarge(dataForEnlarge(enlargeActive, enlargePause));
 
 }
