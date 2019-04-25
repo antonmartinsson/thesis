@@ -31,11 +31,21 @@ function panelData(dataToDisplay) {
 
         }
         else {
-            // console.log(floatData);
-            distanceChanged = Math.abs(floatData - dataToDisplay[i-30][2]);
-            //console.log(distanceChanged);
-            if (distanceChanged < 0.3) {
-                totalPause += 1;
+            // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
+            if (floatData.toString().charAt(2) == ".")  {
+                distanceChanged = Math.abs(floatData - dataToDisplay[i-30][2]);
+                if (distanceChanged < 0.3) {
+                    // console.log("Second added");
+                    totalPause += 1;
+                }
+            } 
+            else {
+                var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
+                distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][2]);
+                if (distanceChanged < 0.3) {
+                    // console.log("Second added");
+                    totalPause += 1;
+                }
             }
         }
     }
@@ -55,11 +65,21 @@ function popupData(dataToDisplay) {
 
         }
         else {
-            // console.log(floatData);
-            distanceChanged = Math.abs(floatData - dataToDisplay[i-30][0]);
-            if (distanceChanged < 0.3) {
-                // console.log("Second added");
-                totalPause += 1;
+            // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
+            if (floatData.toString().charAt(2) == ".")  {
+                distanceChanged = Math.abs(floatData - dataToDisplay[i-30][0]);
+                if (distanceChanged < 0.3) {
+                    // console.log("Second added");
+                    totalPause += 1;
+                }
+            } 
+            else {
+                var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
+                distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][0]);
+                if (distanceChanged < 0.3) {
+                    // console.log("Second added");
+                    totalPause += 1;
+                }
             }
         }
     }
@@ -82,11 +102,22 @@ function enlargeData(dataToDisplay) {
 
         }
         else {
-            //console.log(floatData);
-            distanceChanged = Math.abs(floatData - dataToDisplay[i-30][1]);
-            if (distanceChanged < 0.3) {
-                //console.log("Second added");
-                totalPause += 1;
+            // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
+            if (floatData.toString().charAt(2) == ".") {
+                distanceChanged = Math.abs(floatData - dataToDisplay[i-30][1]);
+                if (distanceChanged < 0.3) {
+                    // console.log("Second added");
+                    totalPause += 1;
+                }
+            } 
+            else {
+                var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
+                console.log("NEW FLOAT DATA: " + newFloatData);
+                distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][1]);
+                if (distanceChanged < 0.3) {
+                    // console.log("Second added");
+                    totalPause += 1;
+                }
             }
         }
     }
