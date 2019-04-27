@@ -43,7 +43,6 @@ var svg = d3.select("#likertContainer").append("svg")
 
     if (implementation == "panel") {
       d3.csv("panel_likert.csv", function(error, data) {
-        console.log(data);
 
         data.forEach(function(d) {
           // calc percentages

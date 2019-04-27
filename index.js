@@ -1,4 +1,3 @@
-console.log("Hejsan");
 parseCSV();
 
 function parseCSV() {
@@ -104,7 +103,6 @@ function panelData(dataToDisplay, all) {
     }
     var panelActive = dataToDisplay.length/30 - totalPause;
     var panelPause = totalPause;
-    console.log(panelPause);
 
     var panel = [panelActive, panelPause];
     return panel;
@@ -168,7 +166,6 @@ function enlargeData(dataToDisplay) {
             } 
             else {
                 var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
-                console.log("NEW FLOAT DATA: " + newFloatData);
                 distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][1]);
                 if (distanceChanged < 0.25) {
                     // console.log("Second added");
