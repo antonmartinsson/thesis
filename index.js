@@ -1,9 +1,12 @@
 console.log("Hejsan");
 parseCSV();
 
-
 function parseCSV() {
     var participant = document.getElementById("participant").value;
+    if (participant == "All") {
+        parseAll();
+        return;
+    }
     var dataToDisplay = [];
     var url = "https://raw.githubusercontent.com/antonmedstorta/thesis/master/Data/" + participant + ".csv";
     Papa.parse(url, {
@@ -12,15 +15,65 @@ function parseCSV() {
         complete: function(results) {
             //console.log("Finished:", results.data)
             dataToDisplay = results.data;
-            console.log(dataToDisplay);
-            panelData(dataToDisplay);
-            popupData(dataToDisplay);
-            enlargeData(dataToDisplay);
+            var panelArray = panelData(dataToDisplay);
+            var popupArray = popupData(dataToDisplay);
+            var enlargeArray = enlargeData(dataToDisplay);
+
+            changePanel(dataForPanel(panelArray[0], panelArray[1]));
+            changePopup(dataForPopup(popupArray[0], popupArray[1]));
+            changeEnlarge(dataForEnlarge(enlargeArray[0], enlargeArray[1]));
         }
     });
 }
 
-function panelData(dataToDisplay) {
+function parseAll() {
+    var totalPanelPause = 0;
+    var totalPanelActive = 0;
+    var totalPopupPause = 0;
+    var totalPopupActive = 0;
+    var totalEnlargePause = 0;
+    var totalEnlargeActive = 0;
+
+    var participants = new Array();
+    var participantDropDown = document.getElementById("participant");
+    for (i = 0; i < participantDropDown.options.length; i++) {
+        participants[i] = participantDropDown.options[i].value;
+    }
+
+    for (participant in participants) {
+        if (participants[participant] != "All") {
+            var url = "https://raw.githubusercontent.com/antonmedstorta/thesis/master/Data/" + participants[participant] + ".csv";
+            Papa.parse(url, {
+                delimiter: ";",
+                download: true,
+                complete: function(results) {
+                    //console.log("Finished:", results.data)
+                    dataToDisplay = results.data;
+                    var panelArray = panelData(dataToDisplay);
+                    var popupArray = popupData(dataToDisplay);
+                    var enlargeArray = enlargeData(dataToDisplay);
+    
+                    totalPanelPause += panelArray[1];
+                    totalPopupPause += popupArray[1];
+                    totalEnlargePause += enlargeArray[1];
+    
+                    totalPanelActive += panelArray[0];
+                    totalPopupActive += popupArray[0];
+                    totalEnlargeActive += enlargeArray[0];
+
+                    if (i == participants.length) {
+                        changePanel(dataForPanel(totalPanelActive, totalPanelPause));
+                        changePopup(dataForPopup(totalPopupActive, totalPopupPause));
+                        changeEnlarge(dataForEnlarge(totalEnlargeActive, totalEnlargePause));
+                    }
+                }
+            });
+        }
+    }
+
+}
+
+function panelData(dataToDisplay, all) {
     var totalPause = 0;
     var distanceChanged = 0;
 
@@ -34,7 +87,7 @@ function panelData(dataToDisplay) {
             // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
             if (floatData.toString().charAt(2) == ".")  {
                 distanceChanged = Math.abs(floatData - dataToDisplay[i-30][2]);
-                if (distanceChanged < 0.3) {
+                if (distanceChanged < 0.25) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -42,7 +95,7 @@ function panelData(dataToDisplay) {
             else {
                 var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
                 distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][2]);
-                if (distanceChanged < 0.3) {
+                if (distanceChanged < 0.25) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -51,7 +104,10 @@ function panelData(dataToDisplay) {
     }
     var panelActive = dataToDisplay.length/30 - totalPause;
     var panelPause = totalPause;
-    changePanel(dataForPanel(panelActive, panelPause));
+    console.log(panelPause);
+
+    var panel = [panelActive, panelPause];
+    return panel;
 }
 
 function popupData(dataToDisplay) {
@@ -68,7 +124,7 @@ function popupData(dataToDisplay) {
             // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
             if (floatData.toString().charAt(2) == ".")  {
                 distanceChanged = Math.abs(floatData - dataToDisplay[i-30][0]);
-                if (distanceChanged < 0.3) {
+                if (distanceChanged < 0.25) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -76,7 +132,7 @@ function popupData(dataToDisplay) {
             else {
                 var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
                 distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][0]);
-                if (distanceChanged < 0.3) {
+                if (distanceChanged < 0.25) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -85,9 +141,9 @@ function popupData(dataToDisplay) {
     }
     var popupActive = dataToDisplay.length/30 - totalPause;
     var popupPause = totalPause;
-    // console.log(popupActive);
-    // console.log(totalPause);
-    changePopup(dataForPopup(popupActive, popupPause));
+
+    var popupArray = [popupActive, popupPause];
+    return popupArray;
 
 }
 
@@ -105,7 +161,7 @@ function enlargeData(dataToDisplay) {
             // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
             if (floatData.toString().charAt(2) == ".") {
                 distanceChanged = Math.abs(floatData - dataToDisplay[i-30][1]);
-                if (distanceChanged < 0.3) {
+                if (distanceChanged < 0.25) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -114,7 +170,7 @@ function enlargeData(dataToDisplay) {
                 var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
                 console.log("NEW FLOAT DATA: " + newFloatData);
                 distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][1]);
-                if (distanceChanged < 0.3) {
+                if (distanceChanged < 0.25) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -123,9 +179,9 @@ function enlargeData(dataToDisplay) {
     }
     var enlargeActive = dataToDisplay.length/30 - totalPause;
     var enlargePause = totalPause;
-    // console.log(enlargeActive);
-    // console.log(totalPause);
-    changeEnlarge(dataForEnlarge(enlargeActive, enlargePause));
+    
+    var enlargeArray = [enlargeActive, enlargePause];
+    return enlargeArray;
 
 }
 
