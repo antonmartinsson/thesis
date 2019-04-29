@@ -64,6 +64,11 @@ function parseAll() {
                         changePanel(dataForPanel(totalPanelActive, totalPanelPause));
                         changePopup(dataForPopup(totalPopupActive, totalPopupPause));
                         changeEnlarge(dataForEnlarge(totalEnlargeActive, totalEnlargePause));
+                        document.getElementById("panelTime").innerText = Math.round((totalPanelActive + totalPanelPause) / 13);
+                        document.getElementById("popupTime").innerText = Math.round((totalPopupActive + totalPopupPause) / 13);
+                        document.getElementById("enlargeTime").innerText = Math.round((totalEnlargeActive + totalEnlargePause) / 13);
+                        document.getElementById("inSeconds").innerText = "in seconds (average, rounded)";
+
                     }
                 }
             });
@@ -75,6 +80,7 @@ function parseAll() {
 function panelData(dataToDisplay, all) {
     var totalPause = 0;
     var distanceChanged = 0;
+    var panelTotal = 0;
 
     for (var i = 0; i < dataToDisplay.length; i += 30) {
         var floatData = parseFloat(dataToDisplay[i][2]);
@@ -83,10 +89,12 @@ function panelData(dataToDisplay, all) {
 
         }
         else {
+            panelTotal += 1;
+
             // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
             if (floatData.toString().charAt(2) == ".")  {
                 distanceChanged = Math.abs(floatData - dataToDisplay[i-30][2]);
-                if (distanceChanged < 0.25) {
+                if (distanceChanged < 0.15) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -94,15 +102,17 @@ function panelData(dataToDisplay, all) {
             else {
                 var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
                 distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][2]);
-                if (distanceChanged < 0.25) {
+                if (distanceChanged < 0.15) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
             }
         }
     }
-    var panelActive = dataToDisplay.length/30 - totalPause;
     var panelPause = totalPause;
+    var panelActive = panelTotal - panelPause;
+    document.getElementById("panelTime").innerText = panelTotal;
+    document.getElementById("inSeconds").innerText = "in seconds (rounded)";
 
     var panel = [panelActive, panelPause];
     return panel;
@@ -111,6 +121,8 @@ function panelData(dataToDisplay, all) {
 function popupData(dataToDisplay) {
     var totalPause = 0;
     var distanceChanged = 0;
+    var popupTotal = 0;
+
 
     for (var i = 0; i < dataToDisplay.length; i += 30) {
         var floatData = parseFloat(dataToDisplay[i][0]);
@@ -119,10 +131,11 @@ function popupData(dataToDisplay) {
 
         }
         else {
+            popupTotal += 1;
             // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
             if (floatData.toString().charAt(2) == ".")  {
                 distanceChanged = Math.abs(floatData - dataToDisplay[i-30][0]);
-                if (distanceChanged < 0.25) {
+                if (distanceChanged < 0.15) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -130,15 +143,17 @@ function popupData(dataToDisplay) {
             else {
                 var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
                 distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][0]);
-                if (distanceChanged < 0.25) {
+                if (distanceChanged < 0.15) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
             }
         }
     }
-    var popupActive = dataToDisplay.length/30 - totalPause;
     var popupPause = totalPause;
+    var popupActive = popupTotal - popupPause;
+    document.getElementById("popupTime").innerText = popupTotal;
+    document.getElementById("inSeconds").innerText = "in seconds (rounded)";
 
     var popupArray = [popupActive, popupPause];
     return popupArray;
@@ -148,6 +163,8 @@ function popupData(dataToDisplay) {
 function enlargeData(dataToDisplay) {
     var totalPause = 0;
     var distanceChanged = 0;
+    var enlargeTotal = 0;
+
 
     for (var i = 0; i < dataToDisplay.length; i += 30) {
         var floatData = parseFloat(dataToDisplay[i][1]);
@@ -156,10 +173,11 @@ function enlargeData(dataToDisplay) {
 
         }
         else {
+            enlargeTotal += 1;
             // Check if a dot is missing (because of formatting in Swedish Excel software, add it if it's not there). 
             if (floatData.toString().charAt(2) == ".") {
                 distanceChanged = Math.abs(floatData - dataToDisplay[i-30][1]);
-                if (distanceChanged < 0.25) {
+                if (distanceChanged < 0.15) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
@@ -167,15 +185,17 @@ function enlargeData(dataToDisplay) {
             else {
                 var newFloatData = parseFloat(floatData.toString().slice(0,2) + "." + floatData.toString().slice(2, floatData.toString().length));
                 distanceChanged = Math.abs(newFloatData - dataToDisplay[i-30][1]);
-                if (distanceChanged < 0.25) {
+                if (distanceChanged < 0.15) {
                     // console.log("Second added");
                     totalPause += 1;
                 }
             }
         }
     }
-    var enlargeActive = dataToDisplay.length/30 - totalPause;
     var enlargePause = totalPause;
+    var enlargeActive = enlargeTotal - enlargePause;
+    document.getElementById("enlargeTime").innerText = enlargeTotal;
+    document.getElementById("inSeconds").innerText = "in seconds (rounded)";
     
     var enlargeArray = [enlargeActive, enlargePause];
     return enlargeArray;
