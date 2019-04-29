@@ -1,7 +1,7 @@
 createLikert();
 
 var margin = {top: 50, right: 20, bottom: 10, left: 65},
-    width = 600 - margin.left - margin.right,
+    width = 900 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var y = d3.scale.ordinal()
@@ -23,7 +23,7 @@ var yAxis = d3.svg.axis()
 
 var svg = d3.select("#likertContainer").append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("viewBox", "0 0 600 600")
+    .attr("viewBox", "0 0 900 500")
     .attr("height", height + margin.top + margin.bottom)
     .attr("id", "d3-plot")
   .append("g")

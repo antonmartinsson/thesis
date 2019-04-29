@@ -79,12 +79,13 @@ body {
 }
 
 #likertContainer {
-  margin-top: 30px;
   display: flex;
+  margin-top: 2%;
   width: 100%;
   justify-content: center;
   align-items: center; 
   overflow: scroll;
+  margin-bottom: 30px;
 }
 
 #likertTitle {
