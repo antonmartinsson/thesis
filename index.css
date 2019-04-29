@@ -110,4 +110,5 @@ body {
 #likertQs {
   font-size: 10pt;
   text-align: center;
+  text-align: -webkit-center;
 }
