@@ -1,5 +1,6 @@
 var enlargeSVG = d3.select("#dataContainer")
     .append("svg")
+    .attr("viewBox", "0 0 350 350")
     .attr("class", "svg-container")
     .append("g")
 
@@ -29,8 +30,6 @@ var outerArc = d3.svg.arc()
     .outerRadius(radius * 0.9);
 
 enlargeSVG.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-enlargeSVG.attr("preserveAspectRatio", "xMinYMin meet");
-enlargeSVG.attr("viewBox", "0 0 360 250");
 
 enlargeSVG.append("text")
    .attr("text-anchor", "middle")

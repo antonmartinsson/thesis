@@ -3,20 +3,15 @@ body {
     position: relative;
   }
 
-  svg {
+  .svg-container {
     display: flex;
     position: relative;
-    height: 100%;
-    vertical-align: top;
-    /* padding-right: 6.3%; */
+    width: 33%;
     overflow: auto;
     justify-content: center;
     align-items: center; 
   }
 
-  .svg-container {
-    height: 300px;
-  }
   
   path.slice{
       stroke-width:2px;
@@ -86,6 +81,7 @@ body {
 #likertContainer {
   margin-top: 30px;
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center; 
   overflow: scroll;
