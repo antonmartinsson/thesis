@@ -40,12 +40,12 @@ popupSVG.append("text")
 
 var key = function(d){ return d.data.label; };
 
-var color = d3.scale.ordinal()
+var popupColor = d3.scale.ordinal()
     .domain(["Active", "Pause"])
-    .range(["#b08cd4", "#8856bb"]);
+    .range(["#FF4A3E", "#EAA886"]);
 
 function dataForPopup(popupActive, popupPause){
-    var labels = color.domain();
+    var labels = popupColor.domain();
     for (var i = 0; i < labels.length; i++) {
         if (i == 0) {
             labels[i] = { label: labels[i].label ? labels[i].label : labels[i], value: popupActive }
@@ -66,7 +66,7 @@ function changePopup(data) {
 
     slice.enter()
         .insert("path")
-        .style("fill", function(d) { return color(d.data.label); })
+        .style("fill", function(d) { return popupColor(d.data.label); })
         .attr("class", "slice");
 
     slice		

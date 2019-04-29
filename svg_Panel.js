@@ -38,12 +38,12 @@ panelSVG.append("text")
 
 var key = function(d){ return d.data.label; };
 
-var color = d3.scale.ordinal()
+var panelColor = d3.scale.ordinal()
     .domain(["Active", "Pause"])
-    .range(["#b08cd4", "#8856bb"]);
+    .range(["#42a5f7", "#9DC5D9"]);
 
 function dataForPanel(panelActive, panelPause){
-    var labels = color.domain();
+    var labels = panelColor.domain();
     for (var i = 0; i < labels.length; i++) {
         if (i == 0) {
             labels[i] = { label: labels[i].label ? labels[i].label : labels[i], value: panelActive }
@@ -65,7 +65,7 @@ function changePanel(data) {
 
     slice.enter()
         .insert("path")
-        .style("fill", function(d) { return color(d.data.label); })
+        .style("fill", function(d) { return panelColor(d.data.label); })
         .attr("class", "slice");
 
     slice		

@@ -38,12 +38,12 @@ enlargeSVG.append("text")
 
 var key = function(d){ return d.data.label; };
 
-var color = d3.scale.ordinal()
+var enlargeColor = d3.scale.ordinal()
     .domain(["Active", "Pause"])
-    .range(["#b08cd4", "#8856bb"]);
+    .range(["#7ECF53", "#BEE0AD"]);
 
 function dataForEnlarge(enlargeActive, enlargePause){
-    var labels = color.domain();
+    var labels = enlargeColor.domain();
     for (var i = 0; i < labels.length; i++) {
         if (i == 0) {
             labels[i] = { label: labels[i].label ? labels[i].label : labels[i], value: enlargeActive }
@@ -64,7 +64,7 @@ function changeEnlarge(data) {
 
     slice.enter()
         .insert("path")
-        .style("fill", function(d) { return color(d.data.label); })
+        .style("fill", function(d) { return enlargeColor(d.data.label); })
         .attr("class", "slice");
 
     slice		

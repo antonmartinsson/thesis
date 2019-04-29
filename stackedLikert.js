@@ -11,7 +11,7 @@ var x = d3.scale.linear()
     .rangeRound([0, width]);
 
 var likertColors = d3.scale.ordinal()
-    .range(["#c7001e", "#f6a580", "#cccccc", "#92c6db", "#086fad"]);
+    .range(["#FF4A3E", "#f6a580", "#cccccc", "#92c6db", "#42A5F7"]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
