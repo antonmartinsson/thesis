@@ -40,7 +40,7 @@ var key = function(d){ return d.data.label; };
 
 var color = d3.scale.ordinal()
     .domain(["Active", "Pause"])
-    .range(["#4998FF", "#8CA3BF"]);
+    .range(["#b08cd4", "#8856bb"]);
 
 function dataForPanel(panelActive, panelPause){
     var labels = color.domain();
