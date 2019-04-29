@@ -85,7 +85,7 @@ body {
   justify-content: center;
   align-items: center; 
   overflow: scroll;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 #preferredImplementation {
@@ -105,4 +105,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; 
+}
+
+#likertQs {
+  font-size: 10pt;
+  text-align: center;
 }
