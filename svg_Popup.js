@@ -31,12 +31,24 @@ var outerArc = d3.svg.arc()
 
 popupSVG.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-
 popupSVG.append("text")
    .attr("text-anchor", "middle")
    .attr("font-size","13px")
    .text("Popup");
 
+popupSVG.append("text")
+    .attr("id", "popupPercentages")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(0, 150)")
+    .attr("font-size","13px")
+    .text("Percentages");
+
+popupSVG.append("text")
+    .attr("id", "popupPercentages2")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(0, 170)")
+    .attr("font-size","13px")
+    .text("Percentages");
 
 var key = function(d){ return d.data.label; };
 

@@ -43,12 +43,12 @@
         </div>
     </div>
 
-    <div class="container" id="details">
-            <div class="row justify-content-center"><h4>Total time spent in each scene</h4></div>
-            <div class="row justify-content-center" id="inSeconds">(in seconds)</div>
-            <div class="row justify-content-center" id="sceneNames"><b>Panel: </b><p id="panelTime"> </p></div>
-            <div class="row justify-content-center" id="sceneNames"><b>Popup: </b><p id="popupTime"> </p></div>
-            <div class="row justify-content-center" id="sceneNames"><b>Enlarge: </b><p id="enlargeTime"> </p></div>
+    <div id="totalTimes" style="background-color:#E9E9E9;float: none;overflow: hidden;padding: 50px">
+        <div class="row justify-content-center"><h4>Total time spent in each scene</h4></div>
+        <div class="row justify-content-center" id="inSeconds">(in seconds)</div>
+        <h1 id="panelTime"></h1>
+        <h1 id="popupTime"></h1>
+        <h1 id=enlargeTime></h1>
     </div>
 
     <div class="row justify-content-center" id="likertTitle"><h3>Likert answers</h3></div>
@@ -70,9 +70,11 @@
         4. Det h&#228;r systemet skulle p&#229;skynda min handlingsupplevelse.<br>
         5. Det h&#228;r systemet skulle g&#246;ra mig mer medveten om erbjudanden i butiken.<br>
         6. Det h&#228;r systemet skulle vara ett bra komplement till mer traditionell skyltning om erbjudanden i butiker.<br></div>
-
-    <div class="row justify-content-center" id="likertTitle"><h3>Preferred Implementation</h3></div>
-    <img id="preferredImplementation" src="https://raw.githubusercontent.com/antonmedstorta/thesis/master/Data/PreferredImplementation.png"></img>
+    
+    <div id="implementationContainer" style="background-color:#E9E9E9;float: none;overflow: hidden;padding: 50px">
+        <div class="row justify-content-center" id="likertTitle"><h3>Preferred Implementation</h3></div>
+        <img id="preferredImplementation" src="https://raw.githubusercontent.com/antonmedstorta/thesis/master/Data/PreferredImplementation.png"></img>
+    </div>
 
 
 <script src="index.js"></script>

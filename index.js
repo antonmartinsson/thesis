@@ -39,8 +39,9 @@ function parseAll() {
         participants[i] = participantDropDown.options[i].value;
     }
 
-    for (participant in participants) {
+    for (participant = 0; participant < participants.length; participant++) {
         if (participants[participant] != "All") {
+
             var url = "https://raw.githubusercontent.com/antonmedstorta/thesis/master/Data/" + participants[participant] + ".csv";
             Papa.parse(url, {
                 delimiter: ";",
@@ -60,14 +61,27 @@ function parseAll() {
                     totalPopupActive += popupArray[0];
                     totalEnlargeActive += enlargeArray[0];
 
-                    if (i == participants.length) {
+                    if (participant == participants.length) {
+                        var totalPanelTime = totalPanelActive + totalPanelPause;
+                        var totalPopupTime = totalPopupActive + totalPopupPause;
+                        var totalEnlargeTime = totalEnlargeActive + totalEnlargePause;
+
                         changePanel(dataForPanel(totalPanelActive, totalPanelPause));
                         changePopup(dataForPopup(totalPopupActive, totalPopupPause));
                         changeEnlarge(dataForEnlarge(totalEnlargeActive, totalEnlargePause));
+                        
                         document.getElementById("panelTime").innerText = Math.round((totalPanelActive + totalPanelPause) / 13);
                         document.getElementById("popupTime").innerText = Math.round((totalPopupActive + totalPopupPause) / 13);
                         document.getElementById("enlargeTime").innerText = Math.round((totalEnlargeActive + totalEnlargePause) / 13);
-                        document.getElementById("inSeconds").innerText = "in seconds (average, rounded)";
+                        document.getElementById("inSeconds").innerText = "in seconds (average, rounded)";   
+                        
+                        document.getElementById("panelPercentages").textContent = "Active: " + Math.round((totalPanelActive/totalPanelTime)*100) + "%";
+                        document.getElementById("popupPercentages").textContent = "Active: " + Math.round((totalPopupActive/totalPopupTime)*100) + "%";
+                        document.getElementById("enlargePercentages").textContent = "Active: " + Math.round((totalEnlargeActive/totalEnlargeTime)*100) + "%";
+
+                        document.getElementById("panelPercentages2").textContent = "Pause: " + Math.round((totalPanelPause/totalPanelTime)*100) + "%";
+                        document.getElementById("popupPercentages2").textContent = "Pause: " + Math.round((totalPopupPause/totalPopupTime)*100) + "%";
+                        document.getElementById("enlargePercentages2").textContent = "Pause: " + Math.round((totalEnlargePause/totalEnlargeTime)*100) + "%";
 
                     }
                 }
@@ -113,6 +127,9 @@ function panelData(dataToDisplay, all) {
     var panelActive = panelTotal - panelPause;
     document.getElementById("panelTime").innerText = panelTotal;
     document.getElementById("inSeconds").innerText = "in seconds (rounded)";
+    
+    document.getElementById("panelPercentages").textContent = "Active: " + Math.round((panelActive/panelTotal)*100) + "%";
+    document.getElementById("panelPercentages2").textContent = "Pause: " + Math.round((panelPause/panelTotal)*100) + "%";
 
     var panel = [panelActive, panelPause];
     return panel;
@@ -155,6 +172,9 @@ function popupData(dataToDisplay) {
     document.getElementById("popupTime").innerText = popupTotal;
     document.getElementById("inSeconds").innerText = "in seconds (rounded)";
 
+    document.getElementById("popupPercentages").textContent = "Active: " + Math.round((popupActive/popupTotal)*100) + "%";
+    document.getElementById("popupPercentages2").textContent = "Pause: " + Math.round((popupPause/popupTotal)*100) + "%";
+
     var popupArray = [popupActive, popupPause];
     return popupArray;
 
@@ -196,6 +216,9 @@ function enlargeData(dataToDisplay) {
     var enlargeActive = enlargeTotal - enlargePause;
     document.getElementById("enlargeTime").innerText = enlargeTotal;
     document.getElementById("inSeconds").innerText = "in seconds (rounded)";
+
+    document.getElementById("enlargePercentages").textContent = "Active: " + Math.round((enlargeActive/enlargeTotal)*100) + "%";
+    document.getElementById("enlargePercentages2").textContent = "Pause: " + Math.round((enlargePause/enlargeTotal)*100) + "%";
     
     var enlargeArray = [enlargeActive, enlargePause];
     return enlargeArray;

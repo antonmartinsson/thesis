@@ -12,6 +12,31 @@ body {
     align-items: center; 
   }
 
+  h1 {
+    font-size: 10vw;
+    margin: 7%; 
+    display: inline;
+  }
+
+  #panelTime {
+    width: 33%;
+  }
+
+  #popupTime {
+    width: 33%;
+  }
+
+  #enlargeTime {
+    width: 33%;
+  }
+
+  #totalTimes {
+    text-align: center;
+  }
+
+  #implementationContainer {
+    text-align: center;
+  }
   
   path.slice{
       stroke-width:2px;
@@ -58,12 +83,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; 
+    text-align: center;
 }
 
 #dataContainer {
     margin-top: 30px;
     justify-content: center;
     align-items: center; 
+    margin-bottom: 2%;
 }
 
 .axis path,
@@ -85,7 +112,6 @@ body {
   justify-content: center;
   align-items: center; 
   overflow: scroll;
-  margin-bottom: 10px;
 }
 
 #preferredImplementation {
@@ -93,13 +119,12 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40px;
-  margin-top: 20px;
-  width: 40%;
+  width: 50%;
   height: auto;
 }
 
 #likertTitle {
-  margin-top: 100px;
+  margin-top: 5%;
 }
 
 #likertChooseScene {
@@ -115,4 +140,5 @@ body {
   text-align: -webkit-center;
   justify-content: center;
   align-items: center; 
+  margin-bottom: 4%;
 }

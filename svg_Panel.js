@@ -36,6 +36,20 @@ panelSVG.append("text")
    .attr("font-size","13px")
    .text("Panel");
 
+panelSVG.append("text")
+    .attr("id", "panelPercentages")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(0, 150)")
+    .attr("font-size","13px")
+    .text("Percentages");
+
+panelSVG.append("text")
+    .attr("id", "panelPercentages2")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(0, 170)")
+    .attr("font-size","13px")
+    .text("Percentages");
+
 var key = function(d){ return d.data.label; };
 
 var panelColor = d3.scale.ordinal()

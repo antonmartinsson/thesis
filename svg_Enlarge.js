@@ -36,6 +36,20 @@ enlargeSVG.append("text")
    .attr("font-size","13px")
    .text("Enlarge");
 
+enlargeSVG.append("text")
+    .attr("id", "enlargePercentages")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(0, 150)")
+    .attr("font-size","13px")
+    .text("Percentages");
+
+enlargeSVG.append("text")
+    .attr("id", "enlargePercentages2")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(0, 170)")
+    .attr("font-size","13px")
+    .text("Percentages");
+
 var key = function(d){ return d.data.label; };
 
 var enlargeColor = d3.scale.ordinal()
