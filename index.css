@@ -32,10 +32,18 @@ body {
 
   #totalTimes {
     text-align: center;
+    background-color:#E9E9E9;
+    float: none;
+    overflow: hidden;
+    padding: 50px;
   }
 
   #implementationContainer {
     text-align: center;
+    background-color:#E9E9E9;
+    float: none;
+    overflow: hidden;
+    padding: 50px;
   }
   
   path.slice{
