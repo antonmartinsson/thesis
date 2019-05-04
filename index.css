@@ -43,6 +43,7 @@ body {
     float: none;
     overflow: hidden;
     padding: 50px;
+    width: 100%;
   }
   
   path.slice{
@@ -132,6 +133,10 @@ body {
 
 #likertTitle {
   margin-top: 5%;
+  text-align: center;
+  text-align: -webkit-center;
+  justify-content: center;
+  align-items: center; 
 }
 
 #likertChooseScene {
