@@ -4,7 +4,6 @@ body {
   }
 
   .svg-container {
-    display: flex;
     position: relative;
     width: 33%;
     overflow: auto;
