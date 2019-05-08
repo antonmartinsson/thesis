@@ -41,6 +41,7 @@ function parseAll() {
 
     for (participant = 0; participant < participants.length; participant++) {
         if (participants[participant] != "All") {
+            if (participants[participant] != "Johanna") {
 
             var url = "https://raw.githubusercontent.com/antonmedstorta/thesis/master/Data/" + participants[participant] + ".csv";
             Papa.parse(url, {
@@ -86,7 +87,7 @@ function parseAll() {
                     }
                 }
             });
-        }
+        }}
     }
 
 }
