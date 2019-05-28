@@ -34,7 +34,7 @@ enlargeSVG.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 enlargeSVG.append("text")
    .attr("text-anchor", "middle")
    .attr("font-size","13px")
-   .text("Enlarge");
+   .text("Scale");
 
 enlargeSVG.append("text")
     .attr("id", "enlargePercentages")

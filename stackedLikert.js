@@ -67,7 +67,12 @@ var svg = d3.select("#likertContainer").append("svg")
       
         x.domain([min_val, max_val]).nice();
         y.domain(data.map(function(d) { return d.Question; }));
-      
+
+        svg.append("g")
+        .attr("class", "x axis")
+        .style("font-size", "7pt")
+        .call(xAxis);
+  
         var vakken = svg.selectAll(".question")
             .data(data)
           .enter().append("g")
@@ -172,6 +177,11 @@ var svg = d3.select("#likertContainer").append("svg")
       
         x.domain([min_val, max_val]).nice();
         y.domain(data.map(function(d) { return d.Question; }));
+
+        svg.append("g")
+        .attr("class", "x axis")
+        .style("font-size", "7pt")
+        .call(xAxis);
       
         var vakken = svg.selectAll(".question")
             .data(data)
@@ -277,6 +287,11 @@ var svg = d3.select("#likertContainer").append("svg")
       
         x.domain([min_val, max_val]).nice();
         y.domain(data.map(function(d) { return d.Question; }));
+
+        svg.append("g")
+        .attr("class", "x axis")
+        .style("font-size", "7pt")
+        .call(xAxis);
       
         var vakken = svg.selectAll(".question")
             .data(data)
