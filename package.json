@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/antonmedstorta/thesis#readme",
   "dependencies": {
-    "papaparse": "^4.6.3"
+    "papaparse": "^5.2.0"
   }
 }
